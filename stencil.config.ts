@@ -23,6 +23,6 @@ export const config: Config = {
   ],
   testing: {
     browserHeadless: 'shell',
-    browserExecutablePath: '/bin/brave',
+    // browserExecutablePath: '/bin/brave',
   },
 };

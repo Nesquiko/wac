@@ -1,0 +1,19 @@
+name: Ambulance Comp CI
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Bun.js
+        uses: oven-sh/setup-bun@v2
+        with:
+          cache: 'bun'
+      - run: bun install --frozen-lockfile
+      - run: bun run build --if-present
+      - run: bun run test
