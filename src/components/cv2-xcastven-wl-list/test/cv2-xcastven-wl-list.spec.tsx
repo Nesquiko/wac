@@ -7,12 +7,11 @@ describe('cv2-xcastven-wl-list', () => {
       components: [Cv2XcastvenWlList],
       html: `<cv2-xcastven-wl-list></cv2-xcastven-wl-list>`,
     });
-    expect(page.root).toEqualHtml(`
-      <cv2-xcastven-wl-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cv2-xcastven-wl-list>
-    `);
+
+    const wlList = page.rootInstance as Cv2XcastvenWlList;
+    const expectedPatients = wlList?.waitingPatients?.length;
+
+    const items = page.root.shadowRoot.querySelectorAll('md-list-item');
+    expect(items.length).toEqual(expectedPatients);
   });
 });
